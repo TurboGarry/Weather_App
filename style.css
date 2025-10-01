@@ -136,7 +136,7 @@ body:before{
 .forecast-item-container{
     display: flex;
     gap: 15px;
-    overflow: scroll;
+    overflow-x: scroll;
     padding-bottom: 12px;
 }
 
