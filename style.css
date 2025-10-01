@@ -182,7 +182,7 @@ body:before{
     gap: 15px;
     margin-top: 25%;
 }
-.message-img{
+.section-message img{
     height: 150px;
     width: fit-content;
 }
