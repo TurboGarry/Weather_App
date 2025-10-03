@@ -2,5 +2,16 @@ const cityInput =  document.querySelector('.city-input');
 const searchBtn = document.querySelector('.search-btn');
 
 searchBtn.addEventListener('click', () => {
-    console.log(cityInput.value)
+    if(cityInput.value.trim() != ''){
+        console.log(cityInput.value);
+        cityInput.value = '';
+        cityInput.blur();
+    }
+})
+cityInput.addEventListener('keydown', (event) => {
+    if (event.key =='Enter' && cityInput.value.trim() != ''){
+        console.log(cityInput.value);
+        cityInput.value = '';
+        cityInput.blur();
+    }
 })
