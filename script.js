@@ -1,17 +1,27 @@
 const cityInput =  document.querySelector('.city-input');
 const searchBtn = document.querySelector('.search-btn');
 
+const apiKey = 'Your_api_key_here';
+
 searchBtn.addEventListener('click', () => {
     if(cityInput.value.trim() != ''){
-        console.log(cityInput.value);
+        updateWeatherInfo(cityInput.value);
         cityInput.value = '';
         cityInput.blur();
     }
 })
 cityInput.addEventListener('keydown', (event) => {
     if (event.key =='Enter' && cityInput.value.trim() != ''){
-        console.log(cityInput.value);
+        updateWeatherInfo(cityInput.value);
         cityInput.value = '';
         cityInput.blur();
     }
 })
+
+function getFetchData(){
+
+}
+
+function updateWeatherInfo(city){
+    const weatherData = getFetchData();
+}
