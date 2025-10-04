@@ -18,10 +18,11 @@ cityInput.addEventListener('keydown', (event) => {
     }
 })
 
-function getFetchData(){
-
+function getFetchData(endPoint, city){
+    // api_url + api_key + city_name
 }
 
 function updateWeatherInfo(city){
-    const weatherData = getFetchData();
+    const weatherData = getFetchData('weather', city);
+    console.log(weatherData);
 }
