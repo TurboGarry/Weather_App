@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 const cityInput =  document.querySelector('.city-input');
 const searchBtn = document.querySelector('.search-btn');
 
@@ -5,7 +8,15 @@ const notFoundSection = document.querySelector('.not-found');
 const secarchCitySection = document.querySelector('.search-city');
 const weatherInfosection = document.querySelector('.weather-info');
 
-const apiKey = 'Your_api_key_here';
+const countryTxt = document.querySelector('.country-txt');
+const tempTxt = document.querySelector('.temp-txt');
+const conditionTxt = document.querySelector('.condition-txt');
+const humidityValueTxt = document.querySelector('.humidity-value-txt');
+const windValueTxt = document.querySelector('.wind-value-txt');
+const weatherSummaryImg = document.querySelector('.weather-summary-img');
+const currentDateTxt = document.querySelector('.current-date-txt');
+
+const apiKey = process.env.API_KEY;
 
 searchBtn.addEventListener('click', () => {
     if(cityInput.value.trim() != ''){
@@ -23,9 +34,9 @@ cityInput.addEventListener('keydown', (event) => {
 })
 
 async function getFetchData(endPoint, city){
-    // api_url + api_key + city_name
+    const apiUrl = `https://api.openweathermap.org/data/2.5/${endPoint}?q=${city}&appid=${apiKey}` 
 
-    const response = await fetch(api_url);
+    const response = await fetch(apiUrl);
 
     return response.json(); 
 }
@@ -38,6 +49,16 @@ async function updateWeatherInfo(city){
         return
     }
     console.log(weatherData);
+    const {
+        name: country,
+        main: { temp, humidity },
+        weather: [{ id, main}],
+        wind: { speed },
+    } = weatherData 
+    
+    countryTxt.textContent = country;
+
+    showDisplaySection(weatherInfosection);
 }
 
 function showDisplaySection(section){
