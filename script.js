@@ -57,6 +57,12 @@ async function updateWeatherInfo(city){
     } = weatherData 
     
     countryTxt.textContent = country;
+    tempTxt.textContent = Math.round(temp) + ' °C';
+    conditionTxt.textContent = main;
+    humidityValueTxt.textContent = humidity + ' %';
+    windValueTxt.textContent = speed + ' m/s';
+
+    weatherSummaryImg.src = `./assets/weather/${getWeatherIcon(id)}.svg`;
 
     showDisplaySection(weatherInfosection);
 }
